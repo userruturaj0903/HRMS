@@ -1,0 +1,15 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Rider
+.idea/
