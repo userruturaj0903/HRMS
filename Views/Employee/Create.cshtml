@@ -1,0 +1,172 @@
+@model WorkSphereHRMS.Models.Employee
+
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3>Add Employee</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <div class="row">
+
+                    <!-- Employee Code -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="EmployeeCode" class="form-label"></label>
+                        <input asp-for="EmployeeCode" class="form-control" />
+                        <span asp-validation-for="EmployeeCode" class="text-danger"></span>
+                    </div>
+
+                    <!-- Designation -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Designation" class="form-label"></label>
+                        <input asp-for="Designation" class="form-control" />
+                        <span asp-validation-for="Designation" class="text-danger"></span>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- DOB -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DateOfBirth" class="form-label"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    </div>
+
+                    <!-- Joining Date -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="JoiningDate" class="form-label"></label>
+                        <input asp-for="JoiningDate" type="date" class="form-control" />
+                    </div>
+
+                    <!-- Salary -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Salary" class="form-label"></label>
+                        <input asp-for="Salary" class="form-control" />
+                    </div>
+
+                    <!-- Address -->
+                    <div class="col-md-12 mb-3">
+                        <label asp-for="Address" class="form-label"></label>
+                        <textarea asp-for="Address"
+                                  rows="3"
+                                  class="form-control"></textarea>
+                    </div>
+
+                    <!-- Profile Photo -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Profile Photo</label>
+
+                        <input type="file"
+                               name="photo"
+                               class="form-control"
+                               accept=".jpg,.jpeg,.png" />
+
+                        <small class="text-muted">
+                            Upload JPG, JPEG or PNG image
+                        </small>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Department</label>
+                        <select asp-for="DepartmentId"
+                                asp-items="ViewBag.Departments"
+                                class="form-select">
+                            <option value="">Select Department</option>
+                        </select>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Role</label>
+                        <select asp-for="RoleId"
+                                asp-items="ViewBag.Roles"
+                                class="form-select">
+                            <option value="">Select Role</option>
+                        </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Status" class="form-label"></label>
+                        <select asp-for="Status" class="form-select">
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i>
+                    Save Employee
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i>
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

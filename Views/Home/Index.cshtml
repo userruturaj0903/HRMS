@@ -1,8 +1,212 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model WorkSphereHRMS.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+
+    .employee-marquee {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    .employee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 5ms linear infinite;
+    }
+
+    
+
+    @@keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .emp-card {
+        width: 220px;
+        min-width: 220px;
+        margin-right: 18px;
+        border-radius: 12px;
+        transition: .3s;
+    }
+
+    .emp-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .emp-photo {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #0d6efd;
+    }
+
+</style>
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        <i class="bi bi-speedometer2"></i>
+        Admin Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card bg-primary text-white shadow">
+                <div class="card-body text-center">
+                    <h6>Total Employees</h6>
+                    <h2>@Model.TotalEmployees</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card bg-success text-white shadow">
+                <div class="card-body text-center">
+                    <h6>Total Departments</h6>
+                    <h2>@Model.TotalDepartments</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card bg-warning text-white shadow">
+                <div class="card-body text-center">
+                    <h6>Today's Attendance</h6>
+                    <h2>@Model.TodayAttendance</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card bg-danger text-white shadow">
+                <div class="card-body text-center">
+                    <h6>Pending Leaves</h6>
+                    <h2>@Model.PendingLeaveRequests</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Recently Added Employees -->
+
+<div class="card shadow mt-4">
+
+    
+</div>
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+            <i class="bi bi-people-fill"></i>
+            Recently Added Employees
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <style>
+            .employee-marquee {
+                overflow: hidden;
+                width: 100%;
+            }
+
+            .employee-track {
+                display: inline-flex;
+                gap: 20px;
+                animation: employeeScroll 15s linear infinite;
+            }
+
+            .employee-track:hover {
+                animation-play-state: paused;
+            }
+
+            @@keyframes employeeScroll {
+                0% {
+                    transform: translateX(100%);
+                }
+
+                100% {
+                    transform: translateX(-120%);
+                }
+            }
+
+            .emp-card {
+                width: 220px;
+                min-width: 220px;
+                border-radius: 12px;
+            }
+
+            .emp-photo {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 3px solid #0d6efd;
+            }
+        </style>
+
+        <div class="employee-marquee">
+
+            <div class="employee-track">
+
+                @foreach (var employee in Model.RecentEmployees)
+                {
+                    <div class="card emp-card shadow-sm">
+
+                        <div class="card-body text-center">
+
+                            @if (!string.IsNullOrEmpty(employee.ProfileImage))
+                            {
+                                <img src="~/uploads/@employee.ProfileImage"
+                                     class="emp-photo mb-2" />
+                            }
+                            else
+                            {
+                                <img src="https://ui-avatars.com/api/?name=@employee.FirstName+@employee.LastName&background=0D6EFD&color=fff"
+                                     class="emp-photo mb-2" />
+                            }
+
+                            <h6 class="fw-bold mb-1">
+                                @employee.FirstName @employee.LastName
+                            </h6>
+
+                            <small class="text-muted d-block">
+                                @employee.Designation
+                            </small>
+
+                            <span class="badge bg-primary mt-2">
+                                @employee.Department?.DepartmentName
+                            </span>
+
+                            <br />
+
+                            <span class="badge bg-success mt-2">
+                                @employee.Role?.RoleName
+                            </span>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 </div>

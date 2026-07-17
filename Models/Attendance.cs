@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorkSphereHRMS.Models
 {
+     [Table("Attendance")]
     public class Attendance
     {
         [Key]

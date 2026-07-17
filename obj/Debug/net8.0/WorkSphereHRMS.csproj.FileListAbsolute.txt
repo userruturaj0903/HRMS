@@ -139,3 +139,4 @@
 /Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/obj/Debug/net8.0/WorkSphereHRMS.pdb
 /Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/obj/Debug/net8.0/WorkSphereHRMS.genruntimeconfig.cache
 /Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/obj/Debug/net8.0/ref/WorkSphereHRMS.dll
+/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/obj/Debug/net8.0/WorkSphereHRMS.sourcelink.json

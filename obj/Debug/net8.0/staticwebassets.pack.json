@@ -245,6 +245,18 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG",
+      "PackagePath": "staticwebassets/uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG"
+    },
+    {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/4db68b83-2b6a-4f3d-a99d-e1087e620887.jpg",
+      "PackagePath": "staticwebassets/uploads/4db68b83-2b6a-4f3d-a99d-e1087e620887.jpg"
+    },
+    {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/fae053cb-ac09-46f0-bf5a-911013a5da45.JPG",
+      "PackagePath": "staticwebassets/uploads/fae053cb-ac09-46f0-bf5a-911013a5da45.JPG"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.WorkSphereHRMS.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
