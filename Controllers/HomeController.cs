@@ -35,8 +35,7 @@ public class HomeController : Controller
                 .Count(l => l.Status == "Pending"),
 
             RecentEmployees = _context.Employees
-                .OrderByDescending(e => e.EmployeeId).Distinct
-                ()
+                .OrderByDescending(e => e.EmployeeId)
                 .Take(3)
                 .ToList(),
 

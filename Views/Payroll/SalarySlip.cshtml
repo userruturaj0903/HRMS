@@ -1,0 +1,356 @@
+@model WorkSphereHRMS.Models.Payroll
+
+@{
+     Layout = null;
+    ViewData["Title"] = "Salary Slip";
+
+    decimal grossSalary =
+        Model.BasicSalary +
+        Model.HRA +
+        Model.DA +
+        Model.MedicalAllowance +
+        Model.TravelAllowance +
+        Model.Bonus;
+
+    decimal totalDeduction =
+        Model.PF +
+        Model.ProfessionalTax +
+        Model.IncomeTax;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Salary Slip</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        body {
+            background: #f4f4f4;
+        }
+
+        .salary-slip {
+            background: white;
+            padding: 40px;
+            margin: 30px auto;
+            border: 1px solid #ddd;
+            max-width: 900px;
+            box-shadow: 0 0 15px rgba(0,0,0,.15);
+        }
+
+        .company-logo {
+            width: 100px;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        .section-title {
+            background: #0d6efd;
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+        }
+
+        @@media print {
+
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .salary-slip {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="salary-slip">
+
+        <!-- Company Header -->
+
+        <div class="row">
+
+            <div class="col-md-2">
+
+                <img src="~/images/company-logo.png"
+                     class="company-logo"
+                     asp-append-version="true"/>
+
+            </div>
+
+            <div class="col-md-10 text-center">
+
+                <h2 class="fw-bold">WorkSphere HRMS</h2>
+
+                <p class="mb-0">
+                    Pune, Maharashtra
+                </p>
+
+                <p class="mb-0">
+                    Email : hr@worksphere.com
+                </p>
+
+                <p>
+                    Phone : +91 9876543210
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <h3 class="text-center mb-4">
+            Salary Slip
+        </h3>
+
+        <!-- Employee Details -->
+
+        <div class="section-title">
+            Employee Information
+        </div>
+
+        <table class="table table-bordered">
+
+            <tr>
+
+                <th width="20%">Employee</th>
+
+                <td>
+                    @Model.Employee?.FirstName @Model.Employee?.LastName
+                </td>
+
+                <th>Month</th>
+
+                <td>@Model.Month</td>
+
+            </tr>
+
+            <tr>
+
+                <th>Year</th>
+
+                <td>@Model.Year</td>
+
+                <th>Payment Date</th>
+
+                <td>
+                    @Model.PaymentDate.ToString("dd-MMM-yyyy")
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Status</th>
+
+                <td>@Model.Status</td>
+
+                <th>Employee ID</th>
+
+                <td>@Model.EmployeeId</td>
+
+            </tr>
+
+        </table>
+
+        <!-- Earnings -->
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="section-title">
+                    Earnings
+                </div>
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th>Basic Salary</th>
+                        <td>₹ @Model.BasicSalary.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>HRA</th>
+                        <td>₹ @Model.HRA.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>DA</th>
+                        <td>₹ @Model.DA.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Medical</th>
+                        <td>₹ @Model.MedicalAllowance.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Travel</th>
+                        <td>₹ @Model.TravelAllowance.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Bonus</th>
+                        <td>₹ @Model.Bonus.ToString("N2")</td>
+                    </tr>
+
+                    <tr class="table-success">
+
+                        <th>Gross Salary</th>
+
+                        <th>
+                            ₹ @grossSalary.ToString("N2")
+                        </th>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <!-- Deductions -->
+
+            <div class="col-md-6">
+
+                <div class="section-title">
+                    Deductions
+                </div>
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th>PF</th>
+                        <td>₹ @Model.PF.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Professional Tax</th>
+                        <td>₹ @Model.ProfessionalTax.ToString("N2")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Income Tax</th>
+                        <td>₹ @Model.IncomeTax.ToString("N2")</td>
+                    </tr>
+
+                    <tr class="table-danger">
+
+                        <th>Total Deduction</th>
+
+                        <th>
+                            ₹ @totalDeduction.ToString("N2")
+                        </th>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- Net Salary -->
+
+        <table class="table table-bordered">
+
+            <tr class="table-primary">
+
+                <th style="font-size:22px;">
+                    Net Salary
+                </th>
+
+                <th class="text-end text-success"
+                    style="font-size:24px;">
+
+                    ₹ @Model.NetSalary.ToString("N2")
+
+                </th>
+
+            </tr>
+
+        </table>
+
+        <br />
+
+        <div class="row mt-5">
+
+            <div class="col-md-6 text-center">
+
+                _______________________
+
+                <br />
+
+                Employee Signature
+
+            </div>
+
+            <div class="col-md-6 text-center">
+
+                _______________________
+
+                <br />
+
+                HR Manager
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <p class="text-center text-muted">
+
+            This is a computer-generated salary slip and does not require a physical signature.
+
+        </p>
+
+        <div class="text-center mt-4 no-print">
+
+            <button class="btn btn-primary"
+                    onclick="window.print()">
+
+                🖨 Print Salary Slip
+
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+
+                Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

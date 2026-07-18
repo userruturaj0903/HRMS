@@ -1,0 +1,136 @@
+@model WorkSphereHRMS.Models.Payroll
+
+@{
+    ViewData["Title"] = "Payroll Details";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-info text-white">
+            <h4>
+                <i class="fas fa-file-invoice-dollar"></i>
+                Payroll Details
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered">
+
+                <tr>
+                    <th width="30%">Employee</th>
+                    <td>@Model.Employee?.FirstName @Model.Employee?.LastName</td>
+                </tr>
+
+                <tr>
+                    <th>Month</th>
+                    <td>@Model.Month</td>
+                </tr>
+
+                <tr>
+                    <th>Year</th>
+                    <td>@Model.Year</td>
+                </tr>
+
+                <tr>
+                    <th>Basic Salary</th>
+                    <td>₹ @Model.BasicSalary.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>HRA</th>
+                    <td>₹ @Model.HRA.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>DA</th>
+                    <td>₹ @Model.DA.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>Medical Allowance</th>
+                    <td>₹ @Model.MedicalAllowance.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>Travel Allowance</th>
+                    <td>₹ @Model.TravelAllowance.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>Bonus</th>
+                    <td>₹ @Model.Bonus.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>PF</th>
+                    <td>₹ @Model.PF.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>Professional Tax</th>
+                    <td>₹ @Model.ProfessionalTax.ToString("N2")</td>
+                </tr>
+
+                <tr>
+                    <th>Income Tax</th>
+                    <td>₹ @Model.IncomeTax.ToString("N2")</td>
+                </tr>
+
+                <tr class="table-success">
+                    <th>Net Salary</th>
+                    <td>
+                        <strong>₹ @Model.NetSalary.ToString("N2")</strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Payment Date</th>
+                    <td>@Model.PaymentDate.ToString("dd-MMM-yyyy")</td>
+                </tr>
+
+                <tr>
+                    <th>Status</th>
+                    <td>
+
+                        @if (Model.Status == "Paid")
+                        {
+                            <span class="badge bg-success">Paid</span>
+                        }
+                        else if (Model.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Unpaid</span>
+                        }
+
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="mt-3">
+
+                <a asp-action="Edit"
+                   asp-route-id="@Model.PayrollId"
+                   class="btn btn-warning">
+                    <i class="fas fa-edit"></i>
+                    Edit
+                </a>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back to List
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

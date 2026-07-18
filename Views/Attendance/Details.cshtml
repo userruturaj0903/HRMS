@@ -1,0 +1,101 @@
+@model WorkSphereHRMS.Models.Attendance
+
+@{
+    ViewData["Title"] = "Attendance Details";
+}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-info text-white">
+
+                <h4 class="mb-0">
+                    <i class="bi bi-eye"></i>
+                    Attendance Details
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th width="30%">Employee</th>
+                        <td>@Model.Employee?.FirstName @Model.Employee?.LastName</td>
+                    </tr>
+
+                    <tr>
+                        <th>Attendance Date</th>
+                        <td>@Model.AttendanceDate.ToString("dd-MMM-yyyy")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Check In</th>
+                        <td>@(Model.CheckIn?.ToString(@"hh\:mm") ?? "-")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Check Out</th>
+                        <td>@(Model.CheckOut?.ToString(@"hh\:mm") ?? "-")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Status</th>
+                        <td>
+
+                            @if (Model.Status == "Present")
+                            {
+                                <span class="badge bg-success">Present</span>
+                            }
+                            else if (Model.Status == "Absent")
+                            {
+                                <span class="badge bg-danger">Absent</span>
+                            }
+                            else if (Model.Status == "Leave")
+                            {
+                                <span class="badge bg-warning text-dark">Leave</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-info">@Model.Status</span>
+                            }
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Remarks</th>
+                        <td>@(string.IsNullOrEmpty(Model.Remarks) ? "-" : Model.Remarks)</td>
+                    </tr>
+
+                </table>
+
+                <div class="d-flex justify-content-between">
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i>
+                        Back
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@Model.AttendanceId"
+                       class="btn btn-warning">
+
+                        <i class="bi bi-pencil"></i>
+                        Edit
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

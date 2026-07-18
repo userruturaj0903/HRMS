@@ -1,0 +1,152 @@
+@model WorkSphereHRMS.Models.LeaveRequest
+
+@{
+    ViewData["Title"] = "Edit Leave Request";
+}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-warning text-dark">
+
+                <h4 class="mb-0">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit Leave Request
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Edit">
+
+                    <input type="hidden" asp-for="LeaveRequestId" />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="EmployeeId" class="form-label"></label>
+
+                            <select asp-for="EmployeeId"
+                                    asp-items="ViewBag.EmployeeId"
+                                    class="form-select">
+
+                            </select>
+
+                            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="LeaveTypeId" class="form-label">
+                                Leave Type
+                            </label>
+
+                            <select asp-for="LeaveTypeId"
+                                    asp-items="ViewBag.LeaveTypeId"
+                                    class="form-select">
+
+                            </select>
+
+                            <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="FromDate" class="form-label"></label>
+
+                            <input asp-for="FromDate"
+                                   type="date"
+                                   class="form-control" />
+
+                            <span asp-validation-for="FromDate" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="ToDate" class="form-label"></label>
+
+                            <input asp-for="ToDate"
+                                   type="date"
+                                   class="form-control" />
+
+                            <span asp-validation-for="ToDate" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label asp-for="Reason" class="form-label"></label>
+
+                        <textarea asp-for="Reason"
+                                  rows="4"
+                                  class="form-control"></textarea>
+
+                        <span asp-validation-for="Reason" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label asp-for="Status" class="form-label"></label>
+
+                        <select asp-for="Status" class="form-select">
+
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <a asp-action="Index"
+                           class="btn btn-secondary">
+
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-warning">
+
+                            <i class="bi bi-save"></i>
+                            Update
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

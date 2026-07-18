@@ -1,0 +1,157 @@
+@model IEnumerable<WorkSphereHRMS.Models.Payroll>
+
+@{
+    ViewData["Title"] = "Payroll Management";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="fas fa-money-check-alt"></i> Payroll Management
+            </h4>
+
+            <a asp-action="Create" class="btn btn-light">
+                <i class="fas fa-plus"></i> Generate Payroll
+            </a>
+        </div>
+
+        <div class="card-body">
+
+            <!-- Search -->
+            <form asp-action="Index" method="get" class="row mb-3">
+                <div class="col-md-4">
+                    <input type="text"
+                           name="searchString"
+                           class="form-control"
+                           placeholder="Search Employee..."
+                           value="@Context.Request.Query["searchString"]" />
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </form>
+
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Employee</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Basic Salary</th>
+                        <th>Net Salary</th>
+                        <th>Payment Date</th>
+                        <th>Status</th>
+                        <th width="220">Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.Employee?.FirstName @item.Employee?.LastName
+                                </td>
+
+                                <td>@item.Month</td>
+
+                                <td>@item.Year</td>
+
+                                <td>
+                                    ₹ @item.BasicSalary.ToString("N2")
+                                </td>
+
+                                <td class="fw-bold text-success">
+                                    ₹ @item.NetSalary.ToString("N2")
+                                </td>
+
+                                <td>
+                                    @item.PaymentDate.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td>
+
+                                    @if (item.Status == "Paid")
+                                    {
+                                        <span class="badge bg-success">
+                                            Paid
+                                        </span>
+                                    }
+                                    else if (item.Status == "Pending")
+                                    {
+                                        <span class="badge bg-warning text-dark">
+                                            Pending
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            Unpaid
+                                        </span>
+                                    }
+
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@item.PayrollId"
+                                       class="btn btn-info btn-sm">
+                                        Details
+                                    </a>
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.PayrollId"
+                                       class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.PayrollId"
+                                       class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+                                    <a asp-action="SalarySlip"
+                                    asp-route-id="@item.PayrollId"
+                                    class="btn btn-success btn-sm">
+                                        <i class="fas fa-file-invoice-dollar"></i> Salary Slip
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="8" class="text-center text-muted">
+                                No payroll records found.
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

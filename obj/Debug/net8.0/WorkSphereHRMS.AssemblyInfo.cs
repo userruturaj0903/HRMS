@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkSphereHRMS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa26ea072f66b7bb8de8e93f447b8edcd7850a1f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4624fa0363c20a8282696aab477dad19deffa03f")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkSphereHRMS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkSphereHRMS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

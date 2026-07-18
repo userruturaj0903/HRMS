@@ -3,24 +3,31 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorkSphereHRMS.Models
 {
-     [Table("Attendance")]
+    [Table("Attendance")]
     public class Attendance
     {
         [Key]
         public int AttendanceId { get; set; }
 
+        [Required]
         public int EmployeeId { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime AttendanceDate { get; set; }
-
-        public TimeSpan? CheckIn { get; set; }
-
-        public TimeSpan? CheckOut { get; set; }
-
-        public string Status { get; set; } = string.Empty;
 
         [ForeignKey("EmployeeId")]
         public Employee? Employee { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime AttendanceDate { get; set; }
+
+        [DataType(DataType.Time)]
+        public TimeSpan? CheckIn { get; set; }
+
+        [DataType(DataType.Time)]
+        public TimeSpan? CheckOut { get; set; }
+
+        [Required]
+        public string Status { get; set; } = string.Empty;
+
+        public string? Remarks { get; set; }
     }
 }

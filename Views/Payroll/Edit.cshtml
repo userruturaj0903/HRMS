@@ -1,0 +1,160 @@
+@model WorkSphereHRMS.Models.Payroll
+
+@{
+    ViewData["Title"] = "Edit Payroll";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark">
+            <h4>
+                <i class="fas fa-edit"></i>
+                Edit Payroll
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="PayrollId" />
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="EmployeeId" class="form-label"></label>
+                        <select asp-for="EmployeeId"
+                                asp-items="ViewBag.EmployeeId"
+                                class="form-select">
+                        </select>
+                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="Month"></label>
+                        <input asp-for="Month" class="form-control" />
+                        <span asp-validation-for="Month" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="Year"></label>
+                        <input asp-for="Year" class="form-control" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <h5 class="text-primary">Earnings</h5>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="BasicSalary"></label>
+                        <input asp-for="BasicSalary" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="HRA"></label>
+                        <input asp-for="HRA" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="DA"></label>
+                        <input asp-for="DA" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="MedicalAllowance"></label>
+                        <input asp-for="MedicalAllowance" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="TravelAllowance"></label>
+                        <input asp-for="TravelAllowance" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Bonus"></label>
+                        <input asp-for="Bonus" class="form-control" />
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <h5 class="text-danger">Deductions</h5>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PF"></label>
+                        <input asp-for="PF" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="ProfessionalTax"></label>
+                        <input asp-for="ProfessionalTax" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="IncomeTax"></label>
+                        <input asp-for="IncomeTax" class="form-control" />
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PaymentDate"></label>
+                        <input asp-for="PaymentDate"
+                               type="date"
+                               class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Status"></label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="Pending">Pending</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Unpaid">Unpaid</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="mt-4">
+
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save"></i>
+                        Update Payroll
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Back to List
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -22,6 +22,26 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Attendance/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXR0ZW5kYW5jZS9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Attendance/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXR0ZW5kYW5jZS9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Attendance/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXR0ZW5kYW5jZS9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Attendance/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXR0ZW5kYW5jZS9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Attendance/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXR0ZW5kYW5jZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Department/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwYXJ0bWVudC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,6 +84,50 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/LeaveRequest/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVhdmVSZXF1ZXN0L0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/LeaveRequest/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVhdmVSZXF1ZXN0L0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/LeaveRequest/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVhdmVSZXF1ZXN0L0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/LeaveRequest/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVhdmVSZXF1ZXN0L0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/LeaveRequest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVhdmVSZXF1ZXN0L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Payroll/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF5cm9sbC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Payroll/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF5cm9sbC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Payroll/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF5cm9sbC9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Payroll/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF5cm9sbC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Payroll/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF5cm9sbC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Payroll/SalarySlip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF5cm9sbC9TYWxhcnlTbGlwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/Views/Shared/Error.cshtml]
