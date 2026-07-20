@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/images/CompanyLogo.png",
+      "PackagePath": "staticwebassets/images/CompanyLogo.png"
+    },
+    {
       "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/images/company-logo.png",
       "PackagePath": "staticwebassets/images/company-logo.png"
     },

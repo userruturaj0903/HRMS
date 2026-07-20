@@ -1,0 +1,201 @@
+@model IEnumerable<WorkSphereHRMS.Models.LeaveRequest>
+
+@{
+    ViewData["Title"] = "Leave Report";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+                <i class="fas fa-calendar-minus"></i>
+                Leave Report
+            </h4>
+
+            <button class="btn btn-dark" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+
+        </div>
+
+        <div class="card-body">
+
+            <!-- Filter -->
+
+            <form asp-action="LeaveReport" method="get" class="row g-3 mb-4">
+
+                <div class="col-md-4">
+
+                    <label class="form-label fw-bold">
+                        Leave Status
+                    </label>
+
+                    <select name="status" class="form-select">
+
+                        <option value="">All Status</option>
+
+                        <option value="Pending"
+                                selected="@(Context.Request.Query["status"]=="Pending")">
+                            Pending
+                        </option>
+
+                        <option value="Approved"
+                                selected="@(Context.Request.Query["status"]=="Approved")">
+                            Approved
+                        </option>
+
+                        <option value="Rejected"
+                                selected="@(Context.Request.Query["status"]=="Rejected")">
+                            Rejected
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+
+                    <button type="submit"
+                            class="btn btn-warning text-white me-2">
+
+                        <i class="fas fa-search"></i>
+                        Filter
+
+                    </button>
+
+                    <a asp-action="LeaveReport"
+                       class="btn btn-secondary">
+
+                        Reset
+
+                    </a>
+
+                </div>
+
+            </form>
+
+            <!-- Report Table -->
+
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Employee</th>
+                        <th>Leave Type</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Applied Date</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.Employee?.FirstName
+                                    @item.Employee?.LastName
+                                </td>
+
+                                <td>
+                                    @item.LeaveType?.LeaveTypeName
+                                </td>
+
+                                <td>
+                                    @item.FromDate.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td>
+                                    @item.ToDate.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td>
+                                    @item.AppliedDate.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td>
+                                    @item.Reason
+                                </td>
+
+                                <td>
+
+                                    @if (item.Status == "Approved")
+                                    {
+                                        <span class="badge bg-success">
+                                            Approved
+                                        </span>
+                                    }
+                                    else if (item.Status == "Pending")
+                                    {
+                                        <span class="badge bg-warning text-dark">
+                                            Pending
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            Rejected
+                                        </span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="7"
+                                class="text-center text-danger">
+
+                                No leave records found.
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+<script>
+
+window.onbeforeprint=function(){
+
+    document.querySelector("form").style.display="none";
+
+}
+
+window.onafterprint=function(){
+
+    document.querySelector("form").style.display="block";
+
+}
+
+</script>
+
+}

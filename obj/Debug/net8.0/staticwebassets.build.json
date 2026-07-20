@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "coMFJIqMiz8K+1+UoyZYSUHWrYGR1fvAV3xIVRKBBME=",
+  "Hash": "B9ilEm+rlpxhjch4ivrcse7xoCumYzfRpFOdGSNMzHU=",
   "Source": "WorkSphereHRMS",
   "BasePath": "_content/WorkSphereHRMS",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/company-logo.png"
+    },
+    {
+      "Identity": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/images/CompanyLogo.png",
+      "SourceId": "WorkSphereHRMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/",
+      "BasePath": "_content/WorkSphereHRMS",
+      "RelativePath": "images/CompanyLogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/CompanyLogo.png"
     },
     {
       "Identity": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/js/site.js",

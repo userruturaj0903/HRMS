@@ -1,0 +1,155 @@
+@model IEnumerable<WorkSphereHRMS.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee Report";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+                <i class="fas fa-users"></i>
+                Employee Report
+            </h4>
+
+            <button class="btn btn-light" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="EmployeeReport" method="get" class="row mb-3">
+
+                <div class="col-md-4">
+
+                    <input type="text"
+                           name="search"
+                           class="form-control"
+                           placeholder="Search Employee..."
+                           value="@Context.Request.Query["search"]" />
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+
+                </div>
+
+            </form>
+
+            <table class="table table-bordered table-striped table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Employee Code</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@item.EmployeeCode</td>
+
+                                <td>
+                                    @item.FirstName @item.LastName
+                                </td>
+
+                                <td>
+                                    @item.Department?.DepartmentName
+                                </td>
+
+                                <td>
+                                    @item.Designation
+                                </td>
+
+                                <td>
+                                    @item.Email
+                                </td>
+
+                                <td>
+                                    @item.Phone
+                                </td>
+
+                                <td>
+
+                                    @if(item.Status=="Active")
+                                    {
+                                        <span class="badge bg-success">
+                                            Active
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            Inactive
+                                        </span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="7" class="text-center text-danger">
+                                No Employee Records Found
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+<script>
+
+window.onbeforeprint=function(){
+
+    document.querySelector("form").style.display="none";
+
+}
+
+window.onafterprint=function(){
+
+    document.querySelector("form").style.display="block";
+
+}
+
+</script>
+
+}

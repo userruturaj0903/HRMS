@@ -1,0 +1,210 @@
+@model WorkSphereHRMS.Models.CompanySettings
+
+@{
+    ViewData["Title"] = "Edit Company Settings";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark">
+            <h4>
+                <i class="fas fa-cog"></i>
+                Edit Company Settings
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="SettingId" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row">
+
+                    <div class="col-md-3 text-center">
+
+                        @if (!string.IsNullOrEmpty(Model.CompanyLogo))
+                        {
+                            <img src="~/CompanyLogo/@Model.CompanyLogo"
+                                 class="img-thumbnail mb-3"
+                                 style="width:180px;height:180px;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/no-logo.png"
+                                 class="img-thumbnail mb-3"
+                                 style="width:180px;height:180px;" />
+                        }
+
+                        <label class="form-label fw-bold">Company Logo</label>
+
+                        <input type="file"
+                               name="LogoFile"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="CompanyName" class="form-label"></label>
+
+                                <input asp-for="CompanyName" class="form-control" />
+
+                                <span asp-validation-for="CompanyName" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="FinancialYear" class="form-label"></label>
+
+                                <input asp-for="FinancialYear" class="form-control" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Address" class="form-label"></label>
+
+                            <textarea asp-for="Address"
+                                      rows="2"
+                                      class="form-control"></textarea>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="City" class="form-label"></label>
+
+                                <input asp-for="City" class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="State" class="form-label"></label>
+
+                                <input asp-for="State" class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="Country" class="form-label"></label>
+
+                                <input asp-for="Country" class="form-control" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="PinCode" class="form-label"></label>
+
+                                <input asp-for="PinCode" class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="Phone" class="form-label"></label>
+
+                                <input asp-for="Phone" class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="Email" class="form-label"></label>
+
+                                <input asp-for="Email" class="form-control" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Website" class="form-label"></label>
+
+                            <input asp-for="Website" class="form-control" />
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="OfficeStart" class="form-label"></label>
+
+                                <input asp-for="OfficeStart"
+                                       type="time"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="OfficeEnd" class="form-label"></label>
+
+                                <input asp-for="OfficeEnd"
+                                       type="time"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <label asp-for="GraceMinutes" class="form-label"></label>
+
+                                <input asp-for="GraceMinutes"
+                                       class="form-control" />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i>
+                    Save Changes
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

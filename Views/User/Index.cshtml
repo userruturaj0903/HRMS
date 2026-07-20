@@ -1,0 +1,190 @@
+@model IEnumerable<WorkSphereHRMS.Models.User>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+                <i class="fas fa-users-cog"></i>
+                User Management
+            </h4>
+
+            <a asp-action="Create" class="btn btn-light">
+                <i class="fas fa-plus"></i> Add User
+            </a>
+
+        </div>
+
+        <div class="card-body">
+
+            <!-- Search -->
+
+            <form asp-action="Index" method="get" class="row mb-3">
+
+                <div class="col-md-4">
+
+                    <input type="text"
+                           name="searchString"
+                           class="form-control"
+                           placeholder="Search Username / Email / Role..."
+                           value="@Context.Request.Query["searchString"]" />
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button type="submit" class="btn btn-primary">
+
+                        <i class="fas fa-search"></i> Search
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th width="280">Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@item.Username</td>
+
+                                <td>@item.Email</td>
+
+                                <td>
+
+                                    @if (item.Role == "Admin")
+                                    {
+                                        <span class="badge bg-danger">
+                                            Admin
+                                        </span>
+                                    }
+                                    else if (item.Role == "HR")
+                                    {
+                                        <span class="badge bg-primary">
+                                            HR
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">
+                                            Employee
+                                        </span>
+                                    }
+
+                                </td>
+
+                                <td>
+
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge bg-success">
+                                            Active
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">
+                                            Inactive
+                                        </span>
+                                    }
+
+                                </td>
+
+                                <td>
+
+                                    @item.CreatedDate.ToString("dd-MMM-yyyy")
+
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@item.UserId"
+                                       class="btn btn-info btn-sm">
+                                        Details
+                                    </a>
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.UserId"
+                                       class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
+
+                                    @if (item.IsActive)
+                                    {
+                                        <a asp-action="Deactivate"
+                                           asp-route-id="@item.UserId"
+                                           class="btn btn-secondary btn-sm">
+                                            Deactivate
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Activate"
+                                           asp-route-id="@item.UserId"
+                                           class="btn btn-success btn-sm">
+                                            Activate
+                                        </a>
+                                    }
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.UserId"
+                                       class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="6" class="text-center text-danger">
+
+                                No users found.
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

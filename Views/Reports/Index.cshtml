@@ -1,0 +1,108 @@
+@{
+    ViewData["Title"] = "Reports Dashboard";
+}
+
+<div class="container mt-4">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-chart-bar"></i> Reports Dashboard
+        </h2>
+        <p class="text-muted">
+            View and manage all HR reports from one place.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Employee Report -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body text-center">
+
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+
+                    <h5>Employee Report</h5>
+
+                    <p class="text-muted">
+                        View employee details, departments and status.
+                    </p>
+
+                    <a asp-action="EmployeeReport"
+                       class="btn btn-primary">
+                        View Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Report -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body text-center">
+
+                    <i class="fas fa-calendar-check fa-3x text-success mb-3"></i>
+
+                    <h5>Attendance Report</h5>
+
+                    <p class="text-muted">
+                        View employee attendance records.
+                    </p>
+
+                    <a asp-action="AttendanceReport"
+                       class="btn btn-success">
+                        View Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Leave Report -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body text-center">
+
+                    <i class="fas fa-plane-departure fa-3x text-warning mb-3"></i>
+
+                    <h5>Leave Report</h5>
+
+                    <p class="text-muted">
+                        View leave requests and approval status.
+                    </p>
+
+                    <a asp-action="LeaveReport"
+                       class="btn btn-warning text-white">
+                        View Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Payroll Report -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body text-center">
+
+                    <i class="fas fa-money-check-alt fa-3x text-danger mb-3"></i>
+
+                    <h5>Payroll Report</h5>
+
+                    <p class="text-muted">
+                        View salary and payroll details.
+                    </p>
+
+                    <a asp-action="PayrollReport"
+                       class="btn btn-danger">
+                        View Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,235 @@
+@model IEnumerable<WorkSphereHRMS.Models.Payroll>
+
+@{
+    ViewData["Title"] = "Payroll Report";
+
+    decimal totalBasic = Model.Sum(x => x.BasicSalary);
+    decimal totalNet = Model.Sum(x => x.NetSalary);
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+                <i class="fas fa-money-check-alt"></i>
+                Payroll Report
+            </h4>
+
+            <button class="btn btn-light" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+
+        </div>
+
+        <div class="card-body">
+
+            <!-- Filter -->
+
+            <form asp-action="PayrollReport" method="get" class="row g-3 mb-4">
+
+                <div class="col-md-4">
+
+                    <label class="form-label fw-bold">
+                        Month
+                    </label>
+
+                    <select name="month" class="form-select">
+
+                        <option value="">All Months</option>
+
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+
+                    <button class="btn btn-danger me-2">
+                        <i class="fas fa-search"></i>
+                        Filter
+                    </button>
+
+                    <a asp-action="PayrollReport"
+                       class="btn btn-secondary">
+                        Reset
+                    </a>
+
+                </div>
+
+            </form>
+
+            <!-- Summary Cards -->
+
+            <div class="row mb-4">
+
+                <div class="col-md-6">
+
+                    <div class="card bg-primary text-white">
+
+                        <div class="card-body text-center">
+
+                            <h6>Total Basic Salary</h6>
+
+                            <h3>
+                                ₹ @totalBasic.ToString("N2")
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card bg-success text-white">
+
+                        <div class="card-body text-center">
+
+                            <h6>Total Net Salary</h6>
+
+                            <h3>
+                                ₹ @totalNet.ToString("N2")
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Payroll Table -->
+
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Employee</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Basic Salary</th>
+                        <th>Net Salary</th>
+                        <th>Payment Date</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.Employee?.FirstName
+                                    @item.Employee?.LastName
+                                </td>
+
+                                <td>@item.Month</td>
+
+                                <td>@item.Year</td>
+
+                                <td>
+                                    ₹ @item.BasicSalary.ToString("N2")
+                                </td>
+
+                                <td class="fw-bold text-success">
+                                    ₹ @item.NetSalary.ToString("N2")
+                                </td>
+
+                                <td>
+                                    @item.PaymentDate.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td>
+
+                                    @if (item.Status == "Paid")
+                                    {
+                                        <span class="badge bg-success">
+                                            Paid
+                                        </span>
+                                    }
+                                    else if (item.Status == "Pending")
+                                    {
+                                        <span class="badge bg-warning text-dark">
+                                            Pending
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            Unpaid
+                                        </span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="7"
+                                class="text-center text-danger">
+
+                                No payroll records found.
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+<script>
+
+window.onbeforeprint=function(){
+
+    document.querySelector("form").style.display="none";
+
+}
+
+window.onafterprint=function(){
+
+    document.querySelector("form").style.display="block";
+
+}
+
+</script>
+
+}
