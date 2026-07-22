@@ -20,6 +20,9 @@ namespace WorkSphereHRMS.Models
         [StringLength(100)]
         public string LastName { get; set; } = string.Empty;
 
+        [NotMapped]
+        public string FullName => $"{FirstName} {LastName}";
+
         [Required]
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
@@ -37,6 +40,7 @@ namespace WorkSphereHRMS.Models
         public DateTime JoiningDate { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Designation { get; set; } = string.Empty;
 
         [Column(TypeName = "decimal(10,2)")]
@@ -46,7 +50,20 @@ namespace WorkSphereHRMS.Models
 
         public string? ProfileImage { get; set; }
 
+        // Employee Status
+        [Required]
         public string Status { get; set; } = "Active";
+
+        // Login Credentials
+        [Required]
+        [StringLength(50)]
+        public string Username { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(255)]
+        public string Password { get; set; } = string.Empty;
+
+        public bool IsActive { get; set; } = true;
 
         // Foreign Keys
         public int DepartmentId { get; set; }

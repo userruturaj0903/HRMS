@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets/WorkSphereHRMS.bundle.scp.css"
     },
     {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/CompanyLogo/5e1fbfde-fc4a-4330-acc5-5eda5a2e6b99.JPG",
+      "PackagePath": "staticwebassets/CompanyLogo/5e1fbfde-fc4a-4330-acc5-5eda5a2e6b99.JPG"
+    },
+    {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/CompanyLogo/e00c558b-0f3e-46c7-8632-7c16023c1f1e.png",
+      "PackagePath": "staticwebassets/CompanyLogo/e00c558b-0f3e-46c7-8632-7c16023c1f1e.png"
+    },
+    {
       "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -269,8 +277,8 @@
       "PackagePath": "staticwebassets/uploads/76fc744a-95b2-439b-a530-812e45b31ecd.JPG"
     },
     {
-      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/fae053cb-ac09-46f0-bf5a-911013a5da45.JPG",
-      "PackagePath": "staticwebassets/uploads/fae053cb-ac09-46f0-bf5a-911013a5da45.JPG"
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/e91a5e96-86ff-48fa-bb87-682a68924e10.png",
+      "PackagePath": "staticwebassets/uploads/e91a5e96-86ff-48fa-bb87-682a68924e10.png"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.WorkSphereHRMS.Microsoft.AspNetCore.StaticWebAssets.props",

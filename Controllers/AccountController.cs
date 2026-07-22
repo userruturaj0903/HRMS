@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using WorkSphereHRMS.Data;
 using WorkSphereHRMS.ViewModels;
@@ -16,21 +17,30 @@ namespace WorkSphereHRMS.Controllers
             _context = context;
         }
 
-        // GET: Login
+        // ========================= LOGIN (GET) =========================
+
         [HttpGet]
         public IActionResult Login()
         {
-            // If already logged in, redirect to Home
             if (User.Identity != null && User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                if (User.IsInRole("Admin") || User.IsInRole("HR"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (User.IsInRole("Employee"))
+                {
+                    return RedirectToAction("Index", "EmployeeDashboard");
+                }
             }
 
             return View();
         }
 
-        // POST: Login
+        // ========================= LOGIN (POST) =========================
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
@@ -38,11 +48,14 @@ namespace WorkSphereHRMS.Controllers
                 return View(model);
             }
 
-            var user = _context.Users.FirstOrDefault(x =>
-                x.Username == model.Username &&
-                x.Password == model.Password);
+            var employee = await _context.Employees
+                .Include(e => e.Role)
+                .FirstOrDefaultAsync(e =>
+                    e.Username == model.Username &&
+                    e.Password == model.Password &&
+                    e.IsActive);
 
-            if (user == null)
+            if (employee == null)
             {
                 ViewBag.Error = "Invalid Username or Password";
                 return View(model);
@@ -51,7 +64,11 @@ namespace WorkSphereHRMS.Controllers
             // Create Claims
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Username!)
+                new Claim(ClaimTypes.Name, employee.Username),
+                new Claim(ClaimTypes.Role, employee.Role?.RoleName ?? "Employee"),
+                new Claim("EmployeeId", employee.EmployeeId.ToString()),
+                new Claim("EmployeeCode", employee.EmployeeCode),
+                new Claim("Email", employee.Email ?? "")
             };
 
             // Create Identity
@@ -67,10 +84,25 @@ namespace WorkSphereHRMS.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 principal);
 
-            return RedirectToAction("Index", "Home");
+            // Redirect according to Role
+            switch (employee.Role?.RoleName)
+            {
+                case "Admin":
+                    return RedirectToAction("Index", "Home");
+
+                case "HR":
+                    return RedirectToAction("Index", "Home");
+
+                case "Employee":
+                    return RedirectToAction("Index", "EmployeeDashboard");
+
+                default:
+                    return RedirectToAction("Login");
+            }
         }
 
-        // Logout
+        // ========================= LOGOUT =========================
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
@@ -78,6 +110,13 @@ namespace WorkSphereHRMS.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme);
 
             return RedirectToAction("Login");
+        }
+
+        // ========================= ACCESS DENIED =========================
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

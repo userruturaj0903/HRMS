@@ -60,11 +60,27 @@
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
+                    <!-- Username -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Username" class="form-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
                     <!-- Phone -->
                     <div class="col-md-6 mb-3">
                         <label asp-for="Phone" class="form-label"></label>
                         <input asp-for="Phone" class="form-control" />
                         <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password"
+                               type="password"
+                               class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
                     <!-- Gender -->
@@ -81,27 +97,71 @@
                     <!-- DOB -->
                     <div class="col-md-6 mb-3">
                         <label asp-for="DateOfBirth" class="form-label"></label>
-                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                        <input asp-for="DateOfBirth"
+                               type="date"
+                               class="form-control" />
                     </div>
 
                     <!-- Joining Date -->
                     <div class="col-md-6 mb-3">
                         <label asp-for="JoiningDate" class="form-label"></label>
-                        <input asp-for="JoiningDate" type="date" class="form-control" />
+                        <input asp-for="JoiningDate"
+                               type="date"
+                               class="form-control" />
                     </div>
 
                     <!-- Salary -->
                     <div class="col-md-6 mb-3">
                         <label asp-for="Salary" class="form-label"></label>
                         <input asp-for="Salary" class="form-control" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
                     </div>
 
-                    <!-- Address -->
+                    <!-- Department -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Department</label>
+                        <select asp-for="DepartmentId"
+                                asp-items="ViewBag.Departments"
+                                class="form-select">
+                        </select>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Role</label>
+                        <select asp-for="RoleId"
+                                asp-items="ViewBag.Roles"
+                                class="form-select">
+                        </select>
+                    </div>
+
+                    <!-- Employee Status -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Status" class="form-label"></label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <!-- Login Status -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IsActive" class="form-label">
+                            Login Status
+                        </label>
+
+                        <select asp-for="IsActive" class="form-select">
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                                        <!-- Address -->
                     <div class="col-md-12 mb-3">
                         <label asp-for="Address" class="form-label"></label>
                         <textarea asp-for="Address"
                                   rows="3"
                                   class="form-control"></textarea>
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
 
                     <!-- Current Photo -->
@@ -144,46 +204,23 @@
 
                     </div>
 
-                    <!-- Department -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Department</label>
-                        <select asp-for="DepartmentId"
-                                asp-items="ViewBag.Departments"
-                                class="form-select">
-                        </select>
-                    </div>
-
-                    <!-- Role -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Role</label>
-                        <select asp-for="RoleId"
-                                asp-items="ViewBag.Roles"
-                                class="form-select">
-                        </select>
-                    </div>
-
-                    <!-- Status -->
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Status" class="form-label"></label>
-                        <select asp-for="Status" class="form-select">
-                            <option>Active</option>
-                            <option>Inactive</option>
-                        </select>
-                    </div>
-
                 </div>
 
                 <hr />
 
-                <button type="submit" class="btn btn-warning">
-                    <i class="bi bi-check-circle"></i>
-                    Update Employee
-                </button>
+                <div class="d-flex gap-2">
 
-                <a asp-action="Index" class="btn btn-secondary">
-                    <i class="bi bi-arrow-left"></i>
-                    Back
-                </a>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-check-circle"></i>
+                        Update Employee
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i>
+                        Back
+                    </a>
+
+                </div>
 
             </form>
 

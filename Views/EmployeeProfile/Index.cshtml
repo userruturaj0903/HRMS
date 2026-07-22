@@ -1,0 +1,158 @@
+@model WorkSphereHRMS.Models.Employee
+
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-4">
+
+        <div class="col-md-12">
+            <h2>
+                <i class="fas fa-user-circle text-primary"></i>
+                My Profile
+            </h2>
+            <hr />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <!-- Profile Image -->
+        <div class="col-lg-3">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                    {
+                        <img src="~/images/@Model.ProfileImage"
+                             class="img-fluid rounded-circle border"
+                             width="180"
+                             height="180" />
+                    }
+                    else
+                    {
+                        <img src="~/images/default-user.png"
+                             class="img-fluid rounded-circle border"
+                             width="180"
+                             height="180" />
+                    }
+
+                    <h4 class="mt-3">
+                        @Model.FirstName @Model.LastName
+                    </h4>
+
+                    <span class="badge bg-success">
+                        @Model.Status
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Employee Details -->
+        <div class="col-lg-9">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h5 class="mb-0">
+                        Employee Information
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered table-striped">
+
+                        <tr>
+                            <th width="30%">Employee Code</th>
+                            <td>@Model.EmployeeCode</td>
+                        </tr>
+
+                        <tr>
+                            <th>First Name</th>
+                            <td>@Model.FirstName</td>
+                        </tr>
+
+                        <tr>
+                            <th>Last Name</th>
+                            <td>@Model.LastName</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.Email</td>
+                        </tr>
+
+                        <tr>
+                            <th>Phone</th>
+                            <td>@Model.Phone</td>
+                        </tr>
+
+                        <tr>
+                            <th>Gender</th>
+                            <td>@Model.Gender</td>
+                        </tr>
+
+                        <tr>
+                            <th>Date of Birth</th>
+                            <td>@Model.DateOfBirth.ToString("dd MMM yyyy")</td>
+                        </tr>
+
+                        <tr>
+                            <th>Joining Date</th>
+                            <td>@Model.JoiningDate.ToString("dd MMM yyyy")</td>
+                        </tr>
+
+                        <tr>
+                            <th>Department</th>
+                            <td>@Model.Department?.DepartmentName</td>
+                        </tr>
+
+                        <tr>
+                            <th>Designation</th>
+                            <td>@Model.Designation</td>
+                        </tr>
+
+                        <tr>
+                            <th>Salary</th>
+                            <td>₹ @Model.Salary.ToString("N2")</td>
+                        </tr>
+
+                        <tr>
+                            <th>Address</th>
+                            <td>@Model.Address</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="card-footer text-end">
+
+                    <a asp-controller="EmployeeProfile"
+                       asp-action="Edit"
+                       class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

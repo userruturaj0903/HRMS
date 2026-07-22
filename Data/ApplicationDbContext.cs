@@ -22,7 +22,7 @@ namespace WorkSphereHRMS.Data
 
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
 
-        public DbSet<User> Users { get; set; }
+      
         public DbSet<Payroll> Payrolls { get; set; }
 
         public DbSet<CompanySettings> CompanySettings { get; set; }
