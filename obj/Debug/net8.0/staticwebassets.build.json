@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wXPKh5OpjLJ5TCgouabkaGIZtRd/LjJwxDMu8m+gX6Q=",
+  "Hash": "qCaHhkSAuSSDnIfj7LuAP18JuEU5ESCQHVpFf/UFBxw=",
   "Source": "WorkSphereHRMS",
   "BasePath": "_content/WorkSphereHRMS",
   "Mode": "Default",
@@ -1271,25 +1271,6 @@
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
     },
     {
-      "Identity": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG",
-      "SourceId": "WorkSphereHRMS",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/",
-      "BasePath": "_content/WorkSphereHRMS",
-      "RelativePath": "uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG"
-    },
-    {
       "Identity": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/40b4775b-9deb-4da6-91f7-cc4dd492ee38.JPG",
       "SourceId": "WorkSphereHRMS",
       "SourceType": "Discovered",
@@ -1345,6 +1326,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/76fc744a-95b2-439b-a530-812e45b31ecd.JPG"
+    },
+    {
+      "Identity": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/e85a8642-5da1-4f82-9228-0941572c5b90.jpeg",
+      "SourceId": "WorkSphereHRMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/",
+      "BasePath": "_content/WorkSphereHRMS",
+      "RelativePath": "uploads/e85a8642-5da1-4f82-9228-0941572c5b90.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/e85a8642-5da1-4f82-9228-0941572c5b90.jpeg"
     },
     {
       "Identity": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/e91a5e96-86ff-48fa-bb87-682a68924e10.png",

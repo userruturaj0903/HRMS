@@ -261,10 +261,6 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
-      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG",
-      "PackagePath": "staticwebassets/uploads/16b82d12-90c0-4342-9402-4400c8d642fd.JPG"
-    },
-    {
       "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/40b4775b-9deb-4da6-91f7-cc4dd492ee38.JPG",
       "PackagePath": "staticwebassets/uploads/40b4775b-9deb-4da6-91f7-cc4dd492ee38.JPG"
     },
@@ -275,6 +271,10 @@
     {
       "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/76fc744a-95b2-439b-a530-812e45b31ecd.JPG",
       "PackagePath": "staticwebassets/uploads/76fc744a-95b2-439b-a530-812e45b31ecd.JPG"
+    },
+    {
+      "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/e85a8642-5da1-4f82-9228-0941572c5b90.jpeg",
+      "PackagePath": "staticwebassets/uploads/e85a8642-5da1-4f82-9228-0941572c5b90.jpeg"
     },
     {
       "Id": "/Users/ruturajsukhadevchoure/WorkSphereHRMS/WorkSphereHRMS/wwwroot/uploads/e91a5e96-86ff-48fa-bb87-682a68924e10.png",

@@ -1,0 +1,87 @@
+@model WorkSphereHRMS.Models.Payroll
+
+@{
+    ViewData["Title"] = "Salary Slip";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white text-center">
+
+            <h3>WorkSphere HRMS</h3>
+
+            <h5>Salary Slip</h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered">
+
+                <tr>
+                    <th>Employee</th>
+                    <td>@Model.Employee?.FirstName @Model.Employee?.LastName</td>
+                </tr>
+
+                <tr>
+                    <th>Department</th>
+                    <td>@Model.Employee?.Department?.DepartmentName</td>
+                </tr>
+
+                <tr>
+                    <th>Month</th>
+                    <td>@Model.Month - @Model.Year</td>
+                </tr>
+
+            </table>
+
+            <hr />
+
+            <table class="table table-bordered">
+
+                <tr><th>Basic Salary</th><td>₹ @Model.BasicSalary</td></tr>
+
+                <tr><th>HRA</th><td>₹ @Model.HRA</td></tr>
+
+                <tr><th>DA</th><td>₹ @Model.DA</td></tr>
+
+                <tr><th>Medical Allowance</th><td>₹ @Model.MedicalAllowance</td></tr>
+
+                <tr><th>Travel Allowance</th><td>₹ @Model.TravelAllowance</td></tr>
+
+                <tr><th>Bonus</th><td>₹ @Model.Bonus</td></tr>
+
+                <tr><th>PF</th><td>₹ @Model.PF</td></tr>
+
+                <tr><th>Professional Tax</th><td>₹ @Model.ProfessionalTax</td></tr>
+
+                <tr><th>Income Tax</th><td>₹ @Model.IncomeTax</td></tr>
+
+                <tr class="table-success">
+
+                    <th>Net Salary</th>
+
+                    <th>₹ @Model.NetSalary</th>
+
+                </tr>
+
+            </table>
+
+            <div class="text-end">
+
+                <button onclick="window.print()" class="btn btn-success">
+
+                    Print Salary Slip
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

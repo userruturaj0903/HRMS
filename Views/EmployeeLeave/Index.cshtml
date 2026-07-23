@@ -1,0 +1,83 @@
+@model IEnumerable<WorkSphereHRMS.Models.LeaveRequest>
+
+@{
+    ViewData["Title"] = "Leave History";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h3>Leave History</h3>
+
+        <a asp-action="Create" class="btn btn-success">
+            Apply Leave
+        </a>
+
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+
+        <tr>
+
+            <th>Leave Type</th>
+
+            <th>From</th>
+
+            <th>To</th>
+
+            <th>Status</th>
+
+            <th>Applied On</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.LeaveType?.LeaveTypeName</td>
+
+                <td>@item.FromDate.ToShortDateString()</td>
+
+                <td>@item.ToDate.ToShortDateString()</td>
+
+                <td>
+                    @if (item.Status == "Approved")
+                    {
+                        <span class="badge bg-success">Approved</span>
+                    }
+                    else if (item.Status == "Rejected")
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    }
+                </td>
+
+                <td>@item.AppliedDate.ToString("dd-MMM-yyyy")</td>
+
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+
+</div>

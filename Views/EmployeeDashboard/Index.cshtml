@@ -1,6 +1,10 @@
+@using WorkSphereHRMS.Models
+
 @{
     ViewData["Title"] = "Employee Dashboard";
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+
+    var attendance = ViewBag.TodayAttendance as Attendance;
 }
 
 <div class="container-fluid">
@@ -10,9 +14,10 @@
         Welcome, @User.Identity?.Name
     </h2>
 
+    <!-- Dashboard Cards -->
+
     <div class="row">
 
-        <!-- Present Days -->
         <div class="col-md-3 mb-4">
             <div class="card shadow border-0">
                 <div class="card-body text-center">
@@ -27,7 +32,6 @@
             </div>
         </div>
 
-        <!-- Leave Balance -->
         <div class="col-md-3 mb-4">
             <div class="card shadow border-0">
                 <div class="card-body text-center">
@@ -42,7 +46,6 @@
             </div>
         </div>
 
-        <!-- Salary -->
         <div class="col-md-3 mb-4">
             <div class="card shadow border-0">
                 <div class="card-body text-center">
@@ -57,7 +60,6 @@
             </div>
         </div>
 
-        <!-- Holidays -->
         <div class="col-md-3 mb-4">
             <div class="card shadow border-0">
                 <div class="card-body text-center">
@@ -74,9 +76,96 @@
 
     </div>
 
+    <!-- Today's Attendance -->
+
+    <div class="row mb-4">
+
+        <div class="col-lg-12">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clock"></i>
+                        Today's Attendance
+                    </h5>
+                </div>
+
+                <div class="card-body text-center">
+
+                    @if (attendance == null)
+                    {
+                        <h5 class="text-danger mb-3">
+                            You have not checked in today.
+                        </h5>
+
+                        <form asp-action="CheckIn" method="post">
+                            <button class="btn btn-success btn-lg">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Check In
+                            </button>
+                        </form>
+                    }
+                    else if (attendance.CheckOut == null)
+                    {
+                        <div class="alert alert-success">
+
+                            <h5>Checked In Successfully</h5>
+
+                            <p>
+                                <strong>Check In Time :</strong>
+                                @attendance.CheckIn
+                            </p>
+
+                        </div>
+
+                        <form asp-action="CheckOut" method="post">
+                            <button class="btn btn-danger btn-lg">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Check Out
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="alert alert-primary">
+
+                            <h5>Attendance Completed</h5>
+
+                            <p>
+                                <strong>Check In :</strong>
+                                @attendance.CheckIn
+                            </p>
+
+                            <p>
+                                <strong>Check Out :</strong>
+                                @attendance.CheckOut
+                            </p>
+
+                            <p>
+                                <strong>Status :</strong>
+                                @attendance.Status
+                            </p>
+
+                            <button class="btn btn-success" disabled>
+                                Attendance Completed
+                            </button>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Employee Information -->
+
     <div class="row">
 
-        <!-- Profile -->
         <div class="col-lg-12">
 
             <div class="card shadow">

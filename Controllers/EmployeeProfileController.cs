@@ -18,11 +18,19 @@ namespace WorkSphereHRMS.Controllers
 
         public async Task<IActionResult> Index()
         {
-            int userId = Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            var employeeIdClaim = User.FindFirst("EmployeeId");
+
+            if (employeeIdClaim == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            int employeeId = Convert.ToInt32(employeeIdClaim.Value);
 
             var employee = await _context.Employees
                 .Include(e => e.Department)
-                .FirstOrDefaultAsync(e => e.RoleId == userId);
+                .Include(e => e.Role)
+                .FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
 
             if (employee == null)
             {
@@ -31,5 +39,6 @@ namespace WorkSphereHRMS.Controllers
 
             return View(employee);
         }
+
     }
 }

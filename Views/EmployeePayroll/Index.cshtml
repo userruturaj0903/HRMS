@@ -1,0 +1,73 @@
+@model IEnumerable<WorkSphereHRMS.Models.Payroll>
+
+@{
+    ViewData["Title"] = "My Payroll";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h4>My Payroll</h4>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-striped">
+
+                <thead>
+
+                    <tr>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Net Salary</th>
+                        <th>Status</th>
+                        <th>Salary Slip</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Month</td>
+
+                        <td>@item.Year</td>
+
+                        <td>₹ @item.NetSalary.ToString("N2")</td>
+
+                        <td>
+                            <span class="badge bg-success">
+                                @item.Status
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <a asp-action="SalarySlip"
+                               asp-route-id="@item.PayrollId"
+                               class="btn btn-primary btn-sm">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

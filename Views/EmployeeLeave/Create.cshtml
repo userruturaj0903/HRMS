@@ -1,0 +1,89 @@
+@model WorkSphereHRMS.Models.LeaveRequest
+
+@{
+    ViewData["Title"] = "Apply Leave";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4>Apply Leave</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create">
+
+                <div class="mb-3">
+                    <label class="form-label">Leave Type</label>
+
+                    <select asp-for="LeaveTypeId"
+                            asp-items="ViewBag.LeaveTypes"
+                            class="form-select">
+
+                        <option value="">-- Select Leave Type --</option>
+
+                    </select>
+
+                    <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="FromDate"></label>
+
+                    <input asp-for="FromDate" class="form-control" type="date"/>
+
+                    <span asp-validation-for="FromDate" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="ToDate"></label>
+
+                    <input asp-for="ToDate" class="form-control" type="date"/>
+
+                    <span asp-validation-for="ToDate" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Reason"></label>
+
+                    <textarea asp-for="Reason"
+                              class="form-control"
+                              rows="4"></textarea>
+
+                    <span asp-validation-for="Reason" class="text-danger"></span>
+
+                </div>
+
+                <button class="btn btn-primary">
+                    Apply Leave
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
